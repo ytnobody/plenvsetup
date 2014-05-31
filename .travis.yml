@@ -1,0 +1,9 @@
+language: perl
+perl:
+  - 5.12
+
+script:
+  - bash ./plenvsetup 
+  - . ~/plenvsetup
+  - plenv
+
