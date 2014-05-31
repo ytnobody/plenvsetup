@@ -4,6 +4,6 @@ perl:
 
 script:
   - bash ./plenvsetup 
-  - . ~/bash_profile
+  - . ~/.bash_profile
   - plenv
 
