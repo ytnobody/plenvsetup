@@ -1,4 +1,4 @@
 zsh ./plenvsetup
-source ~/.zsh_profile
+source ~/.zprofile
 plenv
 rm ~/.plenv -rf
