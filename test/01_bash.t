@@ -1,4 +1,4 @@
-bash ./plenvsetup 
-. ~/.bash_profile
-plenv
+bash ./plenvsetup &&
+. ~/.bash_profile &&
+plenv &&
 rm ~/.plenv -rf

@@ -1,4 +1,5 @@
-zsh ./plenvsetup
-source ~/.zprofile
-plenv
+echo '' > ~/.zprofile
+zsh ./plenvsetup &&
+source ~/.zprofile &&
+plenv &&
 rm ~/.plenv -rf
