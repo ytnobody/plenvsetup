@@ -3,7 +3,5 @@ perl:
   - 5.12
 
 script:
-  - bash ./plenvsetup 
-  - . ~/.bash_profile
-  - plenv
-
+  - bash test/01_bash.t
+  - zsh test/02_zsh.t
