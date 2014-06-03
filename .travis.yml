@@ -7,5 +7,5 @@ before_install:
   - sudo apt-get install -qq zsh
 
 script:
-  - bash test/01_bash.t
-  - zsh test/02_zsh.t
+  - SHELL=$(which bash) bash test/01_bash.t
+  - SHELL=$(which zsh) zsh test/02_zsh.t
