@@ -1,6 +1,4 @@
 language: bash
-perl:
-  - 5.12
 
 before_install:
   - sudo apt-get update -qq
