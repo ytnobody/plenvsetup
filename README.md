@@ -7,7 +7,12 @@ plenv setup automation tool [![Build Status](https://travis-ci.org/ytnobody/plen
 On bash,
 
     $ http://is.gd/plenvsetup | bash
-    $ . ~/bash_profile
+    $ . ~/.bash_profile
+
+Or, on zsh,
+
+    $ http://is.gd/plenvsetup | zsh
+    $ . ~/.zprofile
 
 ## ENVIRONMENT
 
