@@ -1,4 +1,4 @@
-language: perl
+language: bash
 perl:
   - 5.12
 
