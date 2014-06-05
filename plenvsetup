@@ -4,21 +4,7 @@
 # Mon Mar 28 12:41:07 JST 2014 v0.03 by ytnobody
 #
 
-PLENV_REPO=git://github.com/tokuhirom/plenv.git
-PLENV_ROOT=$HOME/.plenv
-PERLBUILDER_REPO=git://github.com/tokuhirom/Perl-Build.git
-PLENV_PLUGIN_DIR=$PLENV_ROOT/plugins
-
-if [ $(echo $SHELL | sed -n '/\/bash$/p') ]; then
-    PROF_FILE=$HOME/.bash_profile
-elif [ $(echo $SHELL | sed -n '/\/zsh$/p') ]; then
-    PROF_FILE=$HOME/.zprofile
-else
-    echo 'use on bash or zsh only.'
-    exit 1
-fi
-
-git --version || die "git is not installed."
+set -e
 
 die () {
     echo $1 >&2
@@ -31,6 +17,28 @@ write_profile () {
     fi
 }
 
+PLENV_REPO=git://github.com/tokuhirom/plenv.git
+PLENV_ROOT=$HOME/.plenv
+PERLBUILDER_REPO=git://github.com/tokuhirom/Perl-Build.git
+PLENV_PLUGIN_DIR=$PLENV_ROOT/plugins
+
+if [ `echo $SHELL | sed -n '/\/bash$/p'` ]; then
+    PROF_FILE=$HOME/.bash_profile
+elif [ `echo $SHELL | sed -n '/\/zsh$/p'` ]; then
+    PROF_FILE=$HOME/.zprofile
+else
+    echo 'use on bash or zsh only.'
+    exit 1
+fi
+
+git --version || die "git is not installed."
+
+if echo $HOME | grep ' ' >/dev/null 2>&1 ; then
+    echo 'this script not support include space to home directory path.'
+    exit 1
+    # ... or quote all variables?
+fi
+
 ### setup plenv
 if [ ! -d $PLENV_ROOT ] ; then
     git clone $PLENV_REPO $PLENV_ROOT || die "git clone failure : $PLENV_REPO"
@@ -40,7 +48,7 @@ write_profile 'export PATH=$PLENV_ROOT/bin:$PATH'
 write_profile 'eval "$(plenv init -)"'
 
 ### setup Perl-Builder
-mkdir $PLENV_PLUGIN_DIR
+mkdir -p $PLENV_PLUGIN_DIR
 git clone $PERLBUILDER_REPO $PLENV_PLUGIN_DIR/perl-build || die "git clone failure : $PERLBUILDER_REPO"
 
 ### notify to finished installing
