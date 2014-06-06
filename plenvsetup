@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # plenvsetup http://is.gd/plenvsetup
-# Mon Mar 28 12:41:07 JST 2014 v0.03 by ytnobody
+# Fri Jun  6 12:16:01 JST 2014 v0.04 by ytnobody
 #
 
 set -e
@@ -17,6 +17,12 @@ write_profile () {
     fi
 }
 
+write_rc () {
+    if [ $(grep "$1" $RC_FILE | wc -l) -le 0 ]; then
+        echo "$1" >> $RC_FILE
+    fi
+}
+
 PLENV_REPO=git://github.com/tokuhirom/plenv.git
 PLENV_ROOT=$HOME/.plenv
 PERLBUILDER_REPO=git://github.com/tokuhirom/Perl-Build.git
@@ -24,8 +30,10 @@ PLENV_PLUGIN_DIR=$PLENV_ROOT/plugins
 
 if [ `echo $SHELL | sed -n '/\/bash$/p'` ]; then
     PROF_FILE=$HOME/.bash_profile
+    RC_FILE=$HOME/.bashrc
 elif [ `echo $SHELL | sed -n '/\/zsh$/p'` ]; then
     PROF_FILE=$HOME/.zprofile
+    RC_FILE=$HOME/.zshrc
 else
     echo 'use on bash or zsh only.'
     exit 1
@@ -46,10 +54,13 @@ fi
 write_profile 'export PLENV_ROOT=$HOME/.plenv'
 write_profile 'export PATH=$PLENV_ROOT/bin:$PATH'
 write_profile 'eval "$(plenv init -)"'
+write_rc ". $PROF_FILE"
 
 ### setup Perl-Builder
-mkdir -p $PLENV_PLUGIN_DIR
-git clone $PERLBUILDER_REPO $PLENV_PLUGIN_DIR/perl-build || die "git clone failure : $PERLBUILDER_REPO"
+if [ ! -d $PLENV_PLUGIN_DIR ] ; then
+    mkdir -p $PLENV_PLUGIN_DIR
+    git clone $PERLBUILDER_REPO $PLENV_PLUGIN_DIR/perl-build || die "git clone failure : $PERLBUILDER_REPO"
+fi
 
 ### notify to finished installing
 echo 'plenv deploy was installed.'
@@ -57,5 +68,7 @@ echo ''
 echo 'To finish install plenv, please exec following command.'
 echo ''
 echo '    . '$PROF_FILE 
+echo ''
+echo 'or restart your terminal.'
 echo ''
 echo 'enjoy.'
