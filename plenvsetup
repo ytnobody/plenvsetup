@@ -12,13 +12,13 @@ die () {
 }
 
 write_profile () {
-    if [ $(grep "$1" $PROF_FILE | wc -l) -le 0 ] ; then
+    if [ `grep "$1" $PROF_FILE | wc -l` -le 0 ] ; then
         echo "$1" >> $PROF_FILE
     fi
 }
 
 write_rc () {
-    if [ $(grep "$1" $RC_FILE | wc -l) -le 0 ]; then
+    if [ `grep "$1" $RC_FILE | wc -l` -le 0 ]; then
         echo "$1" >> $RC_FILE
     fi
 }
