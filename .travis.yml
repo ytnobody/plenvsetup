@@ -7,3 +7,4 @@ before_install:
 script:
   - SHELL=$(which bash) bash test/01_bash.t
   - SHELL=$(which zsh) zsh test/02_zsh.t
+  - SHELL=$(which sh) sh test/03_sh.t
