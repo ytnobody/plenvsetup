@@ -17,7 +17,6 @@ Or, on zsh,
 ## ENVIRONMENT
 
 - bash
-
 - zsh
 
 ## AUTHOR
@@ -27,8 +26,14 @@ Or, on zsh,
 ## CONTRIBUTOR
 
 - songmu
-
 - tsucchi
+- xtetsuji
+
+## SPECIAL THANKS
+
+- nqounet
+- oyomeni_onihime
+- p52_rocca
 
 ## LICENSE
 
