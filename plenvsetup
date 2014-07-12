@@ -54,7 +54,8 @@ fi
 write_profile 'export PLENV_ROOT=$HOME/.plenv'
 write_profile 'export PATH=$PLENV_ROOT/bin:$PATH'
 write_profile 'eval "$(plenv init -)"'
-write_rc ". $PROF_FILE"
+
+grep '\. \~\/\.bashrc' $PROF_FILE > /dev/null 2>&1 || write_rc ". $PROF_FILE"
 
 ### setup Perl-Builder
 if [ ! -d $PLENV_PLUGIN_DIR ] ; then
