@@ -7,19 +7,19 @@
 set -e
 
 die () {
-    echo $1 >&2
+    echo "$1" >&2
     exit 1
 }
 
 write_profile () {
-    if [ `grep "$1" $PROF_FILE | wc -l` -le 0 ] ; then
-        echo "$1" >> $PROF_FILE
+    if [ `grep "$1" "$PROF_FILE" | wc -l` -le 0 ] ; then
+        echo "$1" >> "$PROF_FILE"
     fi
 }
 
 write_rc () {
-    if [ `grep "$1" $RC_FILE | wc -l` -le 0 ]; then
-        echo "$1" >> $RC_FILE
+    if [ `grep "$1" "$RC_FILE" | wc -l` -le 0 ]; then
+        echo "$1" >> "$RC_FILE"
     fi
 }
 
@@ -28,10 +28,10 @@ PLENV_ROOT=$HOME/.plenv
 PERLBUILDER_REPO=git://github.com/tokuhirom/Perl-Build.git
 PLENV_PLUGIN_DIR=$PLENV_ROOT/plugins
 
-if [ `echo $SHELL | sed -n '/\/bash$/p'` ]; then
+if [ `echo "$SHELL" | sed -n '/\/bash$/p'` ]; then
     PROF_FILE=$HOME/.bash_profile
     RC_FILE=$HOME/.bashrc
-elif [ `echo $SHELL | sed -n '/\/zsh$/p'` ]; then
+elif [ `echo "$SHELL" | sed -n '/\/zsh$/p'` ]; then
     PROF_FILE=$HOME/.zprofile
     RC_FILE=$HOME/.zshrc
 else
@@ -41,26 +41,26 @@ fi
 
 git --version || die "git is not installed."
 
-if echo $HOME | grep ' ' >/dev/null 2>&1 ; then
+if echo "$HOME" | grep ' ' >/dev/null 2>&1 ; then
     echo 'this script not support include space to home directory path.'
     exit 1
     # ... or quote all variables?
 fi
 
 ### setup plenv
-if [ ! -d $PLENV_ROOT ] ; then
-    git clone $PLENV_REPO $PLENV_ROOT || die "git clone failure : $PLENV_REPO"
+if [ ! -d "$PLENV_ROOT" ] ; then
+    git clone "$PLENV_REPO" "$PLENV_ROOT" || die "git clone failure : $PLENV_REPO"
 fi
 write_profile 'export PLENV_ROOT=$HOME/.plenv'
 write_profile 'export PATH=$PLENV_ROOT/bin:$PATH'
 write_profile 'eval "$(plenv init -)"'
 
-grep '\. \~\/\.bashrc' $PROF_FILE > /dev/null 2>&1 || write_rc ". $PROF_FILE"
+grep '\. \~\/\.bashrc' "$PROF_FILE" > /dev/null 2>&1 || write_rc ". $PROF_FILE"
 
 ### setup Perl-Builder
-if [ ! -d $PLENV_PLUGIN_DIR ] ; then
-    mkdir -p $PLENV_PLUGIN_DIR
-    git clone $PERLBUILDER_REPO $PLENV_PLUGIN_DIR/perl-build || die "git clone failure : $PERLBUILDER_REPO"
+if [ ! -d "$PLENV_PLUGIN_DIR" ] ; then
+    mkdir -p "$PLENV_PLUGIN_DIR"
+    git clone "$PERLBUILDER_REPO" "$PLENV_PLUGIN_DIR/perl-build" || die "git clone failure : $PERLBUILDER_REPO"
 fi
 
 ### notify to finished installing
@@ -68,7 +68,7 @@ echo 'plenv deploy was installed.'
 echo ''
 echo 'To finish install plenv, please exec following command.'
 echo ''
-echo '    . '$PROF_FILE 
+echo '    . '"$PROF_FILE"
 echo ''
 echo 'or restart your terminal.'
 echo ''
