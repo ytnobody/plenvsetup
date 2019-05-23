@@ -12,13 +12,13 @@ die () {
 }
 
 write_profile () {
-    if [ `grep "$1" "$PROF_FILE" | wc -l` -le 0 ] ; then
+    if [ "$(grep -c "$1" "$PROF_FILE")" -le 0 ] ; then
         echo "$1" >> "$PROF_FILE"
     fi
 }
 
 write_rc () {
-    if [ `grep "$1" "$RC_FILE" | wc -l` -le 0 ]; then
+    if [ "$(grep -c "$1" "$RC_FILE")" -le 0 ]; then
         echo "$1" >> "$RC_FILE"
     fi
 }
@@ -28,10 +28,10 @@ PLENV_ROOT=$HOME/.plenv
 PERLBUILDER_REPO=git://github.com/tokuhirom/Perl-Build.git
 PLENV_PLUGIN_DIR=$PLENV_ROOT/plugins
 
-if [ `echo "$SHELL" | sed -n '/\/bash$/p'` ]; then
+if [ "$(echo "$SHELL" | sed -n '/\/bash$/p')" ]; then
     PROF_FILE=$HOME/.bash_profile
     RC_FILE=$HOME/.bashrc
-elif [ `echo "$SHELL" | sed -n '/\/zsh$/p'` ]; then
+elif [ "$(echo "$SHELL" | sed -n '/\/zsh$/p')" ]; then
     PROF_FILE=$HOME/.zprofile
     RC_FILE=$HOME/.zshrc
 else
