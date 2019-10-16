@@ -1,6 +1,6 @@
 # plenvsetup
 
-plenv setup automation tool [![Build Status](https://travis-ci.org/ytnobody/plenvsetup.svg?branch=master)](https://travis-ci.org/ytnobody/plenvsetup)
+plenv setup automation tool 
 
 ## SYNOPSIS
 
