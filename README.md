@@ -19,6 +19,12 @@ Or, on zsh,
 - bash
 - zsh
 
+## REQUIRES
+
+- perl
+- curl
+- git
+
 ## AUTHOR
 
 - ytnobody
