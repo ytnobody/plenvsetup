@@ -21,7 +21,6 @@ Or, on zsh,
 
 ## REQUIRES
 
-- perl
 - curl
 - git
 
