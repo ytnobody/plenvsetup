@@ -18,6 +18,7 @@ Or, on zsh,
 
 - bash
 - zsh
+- gcc
 
 ## REQUIRES
 
