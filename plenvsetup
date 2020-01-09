@@ -2,7 +2,7 @@
 # shellcheck disable=SC2016
 #
 # plenvsetup http://is.gd/plenvsetup
-# Tue Jan 7 17:29:22 JST 2020 v0.05 by ytnobody
+# Tue Jan 7 17:29:22 JST 2020 v0.06 by ytnobody
 #
 
 set -e
