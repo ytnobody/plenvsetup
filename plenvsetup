@@ -2,7 +2,7 @@
 # shellcheck disable=SC2016
 #
 # plenvsetup http://is.gd/plenvsetup
-# Wed Oct 16 14:44:22 JST 2019 v0.05 by ytnobody
+# Tue Jan 7 17:29:22 JST 2020 v0.05 by ytnobody
 #
 
 set -e
@@ -26,7 +26,7 @@ write_rc () {
 
 PLENV_REPO=git://github.com/tokuhirom/plenv.git
 PLENV_ROOT=$HOME/.plenv
-PERLBUILDER_REPO=git://github.com/tokuhirom/Perl-Build.git
+PERLBUILDER_REPO=https://github.com/skaji/perl-install
 PLENV_PLUGIN_DIR=$PLENV_ROOT/plugins
 
 if [ "$(echo "$SHELL" | sed -n '/\/bash$/p')" ]; then
