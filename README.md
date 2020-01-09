@@ -18,12 +18,12 @@ Or, on zsh,
 
 - bash
 - zsh
-- gcc
 
 ## REQUIRES
 
 - curl
 - git
+- gcc
 
 ## AUTHOR
 
