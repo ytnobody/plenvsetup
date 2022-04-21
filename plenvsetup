@@ -24,7 +24,7 @@ write_rc () {
     fi
 }
 
-PLENV_REPO=git://github.com/tokuhirom/plenv.git
+PLENV_REPO=https://github.com/tokuhirom/plenv.git
 PLENV_ROOT=$HOME/.plenv
 PERLBUILDER_REPO=https://github.com/skaji/perl-install
 PLENV_PLUGIN_DIR=$PLENV_ROOT/plugins
