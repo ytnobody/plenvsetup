@@ -6,12 +6,12 @@ plenv setup automation tool
 
 On bash,
 
-    $ curl -L http://is.gd/plenvsetup | bash
+    $ curl -L https://is.gd/plenvsetup | bash
     $ . ~/.bash_profile
 
 Or, on zsh,
 
-    $ curl -L http://is.gd/plenvsetup | zsh
+    $ curl -L https://is.gd/plenvsetup | zsh
     $ . ~/.zprofile
 
 ## ENVIRONMENT
